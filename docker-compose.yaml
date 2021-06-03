@@ -7,5 +7,4 @@ services:
             POSTGRES_USER: main
             POSTGRES_PASSWORD: main
             POSTGRES_DB: main
-        ports: [5432]ear
-        
+        ports: [5432]
