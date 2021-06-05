@@ -5,6 +5,9 @@
 {% block body %}
     <h2>{{ conference }} Conference</h2>
 
+    <h1>Hola mundo</h1>
+    
+    
     {% if comments|length > 0 %}
 
         <div>Existen {{ comments|length }} comentarios.</div>
@@ -13,7 +16,7 @@
             {% if comment.photofilename %}
                 <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
 
-                <h1>Hola compañero</h1>
+            
 
             {% endif %}
 
