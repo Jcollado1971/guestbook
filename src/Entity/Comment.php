@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * 
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comment
 {
@@ -47,6 +49,16 @@ class Comment
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photoFilename;
+
+
+    /**
+     * @ORM\PrePersist()
+     */
+
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     
     //.....................................................................
