@@ -15,7 +15,7 @@ class ConferenceEntityListener
     {
         $this->slugger = $slugger;
     }
-// pprobando commit
+
 
 
     public function prePersist(Conference $conference, LifecycleEventArgs $event)
