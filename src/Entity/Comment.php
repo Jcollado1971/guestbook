@@ -32,7 +32,7 @@ class Comment
      *
      * 
      */
-   
+
     #[Assert\NotBlank]
     private $tex;
 
@@ -41,7 +41,7 @@ class Comment
      * 
      * 
      */
-    
+
 
     #[Assert\NotBlank]
     #[Assert\Email]
@@ -67,6 +67,12 @@ class Comment
 
 
     /**
+     * @ORM\Column(type="string", length=255, options={"default": "submitted"})
+     */
+    private $state = 'submitted';
+
+
+    /**
      * @ORM\PrePersist()
      */
 
@@ -75,13 +81,13 @@ class Comment
         $this->createdAt = new \DateTime();
     }
 
-    
+
     //.....................................................................
-    
+
     public function __toString(): string
-       {
-          return (string) $this->getEmail();
-       }
+    {
+        return (string) $this->getEmail();
+    }
 
     //.......................................................................
 
@@ -126,7 +132,7 @@ class Comment
 
         return $this;
     }
-    
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -162,4 +168,19 @@ class Comment
 
         return $this;
     }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+
 }
+
