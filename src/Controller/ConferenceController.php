@@ -26,7 +26,7 @@ class ConferenceController extends AbstractController
 
     //public function __construct(Environment $twig)
     public function __construct(Environment $twig, EntityManagerInterface $entityManager, MessageBusInterface $bus)
-    
+
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
@@ -50,7 +50,7 @@ class ConferenceController extends AbstractController
 
 
     public function show(Request $request, Conference $conference, CommentRepository $commentRepository, string $photoDir): Response
-     
+
     {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
@@ -82,11 +82,11 @@ class ConferenceController extends AbstractController
                 'referrer' => $request->headers->get('referer'),
                 'permalink' => $request->getUri(),
             ];
-           
 
-           
 
-            
+
+
+
             $this->bus->dispatch(new CommentMessage($comment->getId(), $context));
 
             return $this->redirectToRoute('conference', ['slug' => $conference->getSlug()]);
